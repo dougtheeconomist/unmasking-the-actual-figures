@@ -42,7 +42,7 @@ def letsfindout(n=1000000):
     metrics represent:
     nums[0]:no symptoms present, 25-30%
     nums[1]:over 50, 34%
-    nums[2]:diabetic, or obese 39%
+    nums[2]:diabetic, or obese, 39%
     nums[3]:chronic lung disease, 13%
     '''
     patients = []
@@ -62,3 +62,67 @@ sim_est = (100/testedratio)*currentnum # = 1421201.32
 
 # calculating percentage of total population, roughly
 (sim_est/331000000)*100 # = 0.4294%
+
+
+'''~~~~~~~~~~~~~~~~~~~~~~~~~simulating more extreme base cases~~~~~~~~~~~~~~~~~~~~~~~~~'''
+
+def severe_case(n):
+    '''
+    version of prediction with more hidden cases
+    metrics represent:
+    nums[0]:no symptoms present, 30%
+    nums[1]:over 60, 15%
+    nums[2]:diabetic, or obese, 39%
+    nums[3]:chronic lung disease, 13%
+    '''
+    patients = []
+    for i in range(n):
+        nums = np.random.randint(1,101,4)
+        patients.append([nums[0], nums[1], nums[2], nums[3]])
+    count = 0
+    for i in patients:
+        if i[0] > 30 and i[1] > 85 or i[0] > 30 and i[2] > 61 or i[0] > 30 and i[3] > 87:
+            count += 1
+    return (count/n)
+
+def mild_case(n):
+    '''
+    version of prediction with less hidden cases
+    metrics represent:
+    nums[0]:no symptoms present, 25%
+    nums[1]:over 50, 34%
+    nums[2]:diabetic, or obese, 39%
+    nums[3]:chronic lung disease, 13%
+    '''
+    patients = []
+    for i in range(n):
+        nums = np.random.randint(1,101,4)
+        patients.append([nums[0], nums[1], nums[2], nums[3]])
+    count = 0
+    for i in patients:
+        if i[0] > 25 and i[1] > 66 or i[0] > 25 and i[2] > 61 or i[0] > 25 and i[3] > 87:
+            count += 1
+    return (count/n)
+
+    def severe_caseV2(n):
+    '''
+    version of prediction with more hidden cases
+
+    relaxes assumption that all individuals in high risk categories who display symptoms 
+    will get tested, this proportion is represented by nums[4]
+    metrics represent:
+    nums[0]:no symptoms present, 25-30%
+    nums[1]:over 60, 15%
+    nums[2]:diabetic, or obese, 39%
+    nums[3]:chronic lung disease, 13%
+    nums[4]:Proportion of high risk cases healthy enough not need to seek help, 50%
+    '''
+    patients = []
+    for i in range(n):
+        nums = np.random.randint(1,101,5)
+        patients.append([nums[0], nums[1], nums[2], nums[3],nums[4]])
+    count = 0
+    for i in patients:
+        if i[0] > 30 and i[1] > 85 and i[4] > 50 or i[0] > 30 and i[2] > 61 and i[4] > 50 or i[0] > 30 and i[3] > 87:
+            count += 1
+    return (count/n)
