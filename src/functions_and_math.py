@@ -104,7 +104,7 @@ def mild_case(n):
             count += 1
     return (count/n)
 
-    def severe_caseV2(n):
+def severe_caseV2(n):
     '''
     version of prediction with more hidden cases
 
@@ -117,6 +117,7 @@ def mild_case(n):
     nums[3]:chronic lung disease, 13%
     nums[4]:Proportion of high risk cases healthy enough not need to seek help, 50%
     '''
+
     patients = []
     for i in range(n):
         nums = np.random.randint(1,101,5)
