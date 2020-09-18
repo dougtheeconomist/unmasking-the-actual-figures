@@ -1,8 +1,10 @@
 # Title: Unmasking the actual figures
 # Author: Doug Hart
 # Date Created: 4/21/2020
-# Last Updated: 4/21/2020
+# Last Updated: 9/16/2020
 
+import numpy as np
+import matplotlib.pyplot as plt
 
 '''~~~~~~~~~~~~~~~~~~~~~~~Part 1: establishing feasability range~~~~~~~~~~~~~~~~~~~~~~~'''
 def findrange(currentnum):
@@ -56,7 +58,7 @@ def letsfindout(n=1000000):
     return (count/n)
 
 testedratio = letsfindout(1000000)  # = 0.455769
-
+currentnum = 645936
 # to generate figure from proportion estimate
 sim_est = (100/testedratio)*currentnum # = 1421201.32
 
@@ -127,3 +129,5 @@ def severe_caseV2(n):
         if i[0] > 30 and i[1] > 85 and i[4] > 50 or i[0] > 30 and i[2] > 61 and i[4] > 50 or i[0] > 30 and i[3] > 87:
             count += 1
     return (count/n)
+
+    current_num = 6711606
